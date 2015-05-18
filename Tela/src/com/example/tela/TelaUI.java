@@ -4,6 +4,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
@@ -30,13 +31,16 @@ public class TelaUI extends UI {//VerticalLayout implements View {
 	
 	
 	//int cont =1;
+	
+	Navigator navigator;
+	protected static final String alterar = "alterar-senha";
 
 	@Override
 	protected void init(VaadinRequest request) {
 
-		final VerticalLayout layout = new VerticalLayout();
-		layout.setMargin(true);
-		setContent(layout);
+//		final VerticalLayout layout = new VerticalLayout();
+//		layout.setMargin(true);
+//		setContent(layout);
 
 		
 //----------------------------bind e table--------------------		
@@ -437,14 +441,20 @@ public class TelaUI extends UI {//VerticalLayout implements View {
 			}
 		});*/
 		
+		getPage().setTitle("tela UI");
+		
+//		navigator = new Navigator(this,this);
+////		
+//		navigator.addView("alterar-senha", new Tela2());
+		
 		Button janela = new Button("Sub-Janela", new ClickListener() {
 			
 			@Override
 			public void buttonClick(ClickEvent event) {
 				//abre a janela na UI
 				//addWindow(subWindow);
+//				navigator.navigateTo(alterar);
 				
-				Tela2 novaTela = new Tela2(getUI());
 			}
 		});
 		/*
@@ -460,6 +470,8 @@ public class TelaUI extends UI {//VerticalLayout implements View {
 		subWindow.center();
 		*/
 		setContent(janela);
+		
+		
 		
 		//abre a janela na UI
 //		addWindow(subWindow);
