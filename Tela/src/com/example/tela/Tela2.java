@@ -19,9 +19,10 @@ import com.vaadin.ui.VerticalLayout;
 @SuppressWarnings("serial")
 public class Tela2 extends VerticalLayout implements View  {
 
+	
 	public Tela2() {
 
-		this.setSizeFull();
+		UI.getCurrent().setSizeFull();
 		
 		HorizontalLayout geral= new HorizontalLayout();
 		
@@ -54,6 +55,15 @@ public class Tela2 extends VerticalLayout implements View  {
 //					UI.getCurrent().getNavigator().navigateTo("alterar-senha");
 				}
 			});
+			
+			Button voltar = new Button("Tela 3",new ClickListener() {
+				
+				@Override
+				public void buttonClick(ClickEvent event) {
+					new Tela3();
+					
+				}
+			});
 		
 		
 		vlinternoMaior.addComponents(senhaAtual,novaSenha,repitaNovaSenha,salvar);
@@ -65,12 +75,12 @@ public class Tela2 extends VerticalLayout implements View  {
 		painel.setContent(vlinternoMaior);
 		
 		geral.addComponent(painel);
+		geral.addComponent(voltar);
 		geral.setSizeFull();
 		geral.setComponentAlignment(painel, Alignment.MIDDLE_CENTER);
+		this.addComponent(geral);
 		
-		
-		
-		UI.getCurrent().setContent(geral);
+		UI.getCurrent().setContent(this);
 	}
 	
 	

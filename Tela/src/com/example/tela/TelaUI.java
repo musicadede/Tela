@@ -10,13 +10,11 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Window;
 
 @SuppressWarnings("serial")
-@Theme("valo")
+@Theme("runo")
 public class TelaUI extends UI {//VerticalLayout implements View {
 
 	@WebServlet(value = "/*", asyncSupported = true)
@@ -31,17 +29,26 @@ public class TelaUI extends UI {//VerticalLayout implements View {
 	
 	
 	//int cont =1;
-	
 	Navigator navigator;
-	protected static final String alterar = "alterar-senha";
+	protected static final String MAINVIEW = "main";
 
 	@Override
 	protected void init(VaadinRequest request) {
 
-//		final VerticalLayout layout = new VerticalLayout();
-//		layout.setMargin(true);
-//		setContent(layout);
+//------------ mudança de tela com uma quase navegação pra organizar melhor as telas--utilizando apenas uma UI
+		getPage().setTitle("tela UI");
+//		navigator = new Navigator(this,this);
+//		
+//		navigator.addView("", new Tela2());
+//		navigator.addView(MAINVIEW,new Tela2());
+		
+		
+		final VerticalLayout layout = new VerticalLayout();
+		layout.setMargin(true);
+		setContent(new Tela2());
+		
 
+//------------ FIM  mudança de tela com uma quase navegação pra organizar melhor as telas--utilizando apenas uma UI		
 		
 //----------------------------bind e table--------------------		
 //		Pessoa pessoa = new Pessoa("","");
@@ -441,22 +448,18 @@ public class TelaUI extends UI {//VerticalLayout implements View {
 			}
 		});*/
 		
-		getPage().setTitle("tela UI");
 		
-//		navigator = new Navigator(this,this);
-////		
-//		navigator.addView("alterar-senha", new Tela2());
 		
-		Button janela = new Button("Sub-Janela", new ClickListener() {
-			
-			@Override
-			public void buttonClick(ClickEvent event) {
-				//abre a janela na UI
-				//addWindow(subWindow);
-//				navigator.navigateTo(alterar);
-				
-			}
-		});
+//		Button janela = new Button("Sub-Janela", new ClickListener() {
+//			
+//			@Override
+//			public void buttonClick(ClickEvent event) {
+//				//abre a janela na UI
+//				//addWindow(subWindow);
+////				navigator.navigateTo(alterar);
+//				
+//			}
+//		});
 		/*
 		subWindow.setWidth("200px");
 		subWindow.setHeight("200px");
@@ -469,7 +472,7 @@ public class TelaUI extends UI {//VerticalLayout implements View {
 		subcontent.addComponent(fechar);
 		subWindow.center();
 		*/
-		setContent(janela);
+	
 		
 		
 		
